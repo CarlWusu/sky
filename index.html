@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sky Airlines - Elevate Your Journey</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #2c3e50;
+        }
+
+        p {
+            font-family: 'Lato', 'Segoe UI', sans-serif;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #34495e;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-family: 'Lato', sans-serif;
+            font-weight: 400;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 14px;
+            transition: all 0.4s ease;
+        }
+
+        .btn-primary {
+            background: #1a365d;
+            color: white;
+            border: 1px solid transparent;
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: #1a365d;
+            border: 1px solid #1a365d;
+            transform: translateY(-2px);
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(to bottom, #f8f9fa, #ffffff);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 400;
+            color: #1a365d;
+            letter-spacing: 2px;
+        }
+        .logo img{
+            width: 30px;
+            height:30px;
+            align-items: end;
+        }
+    
+        
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #34495e;
+            font-family: 'Lato', sans-serif;
+            font-size: 15px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #1a365d;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('pexels-jason-toevs-1047869-2033343.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed; /* This creates a parallax-like effect */
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            margin-top: 70px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content h1 {
+            font-size: 56px;
+            margin-bottom: 24px;
+            line-height: 1.2;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .hero-content p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            color: rgba(255, 255, 255, 0.9);
+            font-family: 'Lato', sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        /* Destinations Section */
+        .destinations {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 42px;
+            margin-bottom: 60px;
+            color: #1a365d;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 40px;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .destinations-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .destination-card {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.4s ease;
+        }
+
+        .destination-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .destination-card img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .destination-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .card-content {
+            padding: 30px;
+            text-align: center;
+            background: white;
+        }
+
+        .card-content h3 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #1a365d;
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background-color: #f8f9fa;
+        }
+
+        .about-content {
+            display: flex;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text {
+            flex: 1;
+            padding-right: 40px;
+        }
+
+        .about-text p {
+            margin-bottom: 24px;
+            font-size: 17px;
+            line-height: 1.8;
+        }
+
+        .about-image {
+            flex: 1;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        /* pricing section */
+          .pricing {
+        padding: 100px 0;
+        background-color: #fff;
+        }
+
+        .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+         margin-top: 50px;
+        }
+
+.pricing-card {
+    background: white;
+    border-radius: 12px;
+    padding: 40px 30px;
+    text-align: center;
+    transition: transform 0.4s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e1e8ed;
+}
+
+.pricing-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.pricing-card h3 {
+    color: #1a365d;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.price {
+    font-size: 48px;
+    color: #1a365d;
+    font-weight: 300;
+    margin-bottom: 30px;
+}
+
+.price span {
+    font-size: 16px;
+    color: #666;
+}
+
+.features {
+    list-style: none;
+    margin-bottom: 30px;
+}
+
+.features li {
+    margin-bottom: 15px;
+    color: #34495e;
+    font-family: 'Lato', sans-serif;
+}
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background: #fff;
+        }
+
+        .contact-content {
+            display: flex;
+            gap: 60px;
+        }
+
+        .contact-form {
+            flex: 2;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-family: 'Lato', sans-serif;
+            color: #34495e;
+            font-size: 15px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #e1e8ed;
+            border-radius: 6px;
+            font-family: 'Lato', sans-serif;
+            font-size: 15px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #1a365d;
+        }
+
+        .contact-info {
+            flex: 1;
+            padding: 40px;
+        }
+
+        .contact-info h3 {
+            font-size: 28px;
+            margin-bottom: 24px;
+            color: #1a365d;
+        }
+
+        .contact-info p {
+            margin-bottom: 16px;
+            font-size: 16px;
+            color: #34495e;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a365d;
+            color: white;
+            padding: 40px 0;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .copyright {
+            font-family: 'Lato', sans-serif;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+        }
+
+        .social-links a {
+            color: white;
+            margin-left: 30px;
+            text-decoration: none;
+            font-family: 'Lato', sans-serif;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            transition: opacity 0.3s ease;
+        }
+
+        .social-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+
+            .hero-content h1 {
+                font-size: 42px;
+            }
+
+            .destinations-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+
+            .contact-content {
+                flex-direction: column;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+
+            .social-links a {
+                margin: 0 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">Sky Airlines
+            <img src="Silohuette Airplane With Banner.jpeg" alt="">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#destinations">Destinations</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <a href="#" class="btn btn-primary">Reserve Your Journey</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h1>Elevate Your Travel Experience</h1>
+            <p>Where luxury meets adventure, and every journey becomes a story worth telling</p>
+            <a href="#destinations" class="btn btn-primary">Discover Destinations</a>
+        </div>
+    </section>
+
+    <!-- Destinations Section -->
+    <section class="destinations" id="destinations">
+        <div class="container">
+            <h2 class="section-title">Curated Destinations</h2>
+            <p class="section-subtitle">Embark on a journey to the world's most captivating locations</p>
+            <div class="destinations-grid">
+                <div class="destination-card">
+                    <img src="eif tower.jpg" alt="Paris">
+                    <div class="card-content">
+                        <h3>Paris</h3>
+                        <a href="#" class="btn btn-primary">Explore</a>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <img src="tokyo.webp" alt="Tokyo">
+                    <div class="card-content">
+                        <h3>Tokyo</h3>
+                        <a href="#" class="btn btn-primary">Explore</a>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <img src="ny.jpg" alt="New York">
+                    <div class="card-content">
+                        <h3>New York</h3>
+                        <a href="#" class="btn btn-primary">Explore</a>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <img src="syd.jpg" alt="Sydney">
+                    <div class="card-content">
+                        <h3>Sydney</h3>
+                        <a href="#" class="btn btn-primary">Explore</a>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <img src="dubai.jpg" alt="Dubai">
+                    <div class="card-content">
+                        <h3>Dubai</h3>
+                        <a href="#" class="btn btn-primary">Explore</a>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <img src="capetown.jpg" alt="Cape Town">
+                    <div class="card-content">
+                        <h3>Cape Town</h3>
+                        <a href="#" class="btn btn-primary">Explore</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">Our Story</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>For over two decades, Sky Airlines has been crafting extraordinary journeys for discerning
+                        travelers. Our legacy is built on the art of transforming mere trips into profound experiences
+                        that resonate long after your return.</p>
+                    <p>We understand that true luxury lies not just in premium services, but in the authenticity of
+                        experiences and the precision of execution. Our curated selection of destinations and
+                        meticulously planned itineraries reflect our commitment to excellence in travel.</p>
+                    <p>With a team of passionate travel artisans and global connections cultivated over years, we ensure
+                        that every journey with Sky Airlines becomes a masterpiece of memorable moments.</p>
+                </div>
+                <div class="about-image">
+                    <img src="d02454cc-40ef-4a64-8183-50d149eefc9e.jpeg" alt="The Sky Airlines Experience">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--Pricing section-->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2 class="section-title">Travel Classes</h2>
+            <p class="section-subtitle">Choose your perfect journey experience</p>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Economy Class</h3>
+                    <div class="price">$499<span>/person</span></div>
+                    <ul class="features">
+                        <li>Comfortable reclining seats</li>
+                        <li>Personal entertainment system</li>
+                        <li>Complimentary meals</li>
+                        <li>One checked baggage</li>
+                        <li>In-flight Wi-Fi access</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">Select Economy</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>Business Class</h3>
+                    <div class="price">$1,499<span>/person</span></div>
+                    <ul class="features">
+                        <li>Spacious lie-flat seats</li>
+                        <li>Premium entertainment system</li>
+                        <li>Gourmet dining experience</li>
+                        <li>Two checked baggage</li>
+                        <li>Priority boarding & lounge access</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">Select Business</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>First Class</h3>
+                    <div class="price">$2,999<span>/person</span></div>
+                    <ul class="features">
+                        <li>Private luxury suite</li>
+                        <li>Personal concierge service</li>
+                        <li>Fine dining with chef's menu</li>
+                        <li>Three checked baggage</li>
+                        <li>Exclusive lounge & spa access</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">Select First Class</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Connect With Us</h2>
+            <div class="contact-content">
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Share Your Travel Dreams</label>
+                            <textarea id="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Begin Your Journey</button>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <h3>Let's Create Together</h3>
+                </div>
+
+</html>
